@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "lib": ["ESNext"],
+    "target": "ES2020",
+    "module": "commonjs",
+    "outDir": "./build",
+    "noEmitOnError": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true
+  },
+  "exclude": ["vitest.config.unit.ts", "./node_modules", "./tests", "./build"]
+}
