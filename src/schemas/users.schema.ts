@@ -20,7 +20,7 @@ const createUserSchema = validation((getSchema) => ({
 }));
 
 const loginUserSchema = validation((getSchema) => ({
-  body: getSchema<Omit<LoginUserDto, 'name'>>(
+  body: getSchema<LoginUserDto>(
     yup.object().shape({
       email: yup.string().required().email().min(6),
 
@@ -29,4 +29,4 @@ const loginUserSchema = validation((getSchema) => ({
   ),
 }));
 
-export { createUserSchema };
+export { createUserSchema, loginUserSchema };

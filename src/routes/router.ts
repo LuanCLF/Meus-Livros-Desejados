@@ -3,13 +3,12 @@ import 'dotenv/config';
 
 import express from 'express';
 import controller from '../controller';
-import { createUserSchema } from '../schemas/users.schema';
+import { createUserSchema, loginUserSchema } from '../schemas/users.schema';
 
 const router = express();
 
-
 router.post('/user', createUserSchema, controller.createUser);
-router.post('/user/login', controller.loginUser);
+router.post('/user/login', loginUserSchema, controller.loginUser);
 router.put('/user', controller.editUser);
 router.delete('/user', controller.deleteUser);
 

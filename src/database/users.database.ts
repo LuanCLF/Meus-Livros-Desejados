@@ -11,6 +11,23 @@ export default class UserRepository {
     return;
   }
 
+  async getPasswordWithEmail(
+    email: string
+  ): Promise<{ id: number; password: string; name: string } | null> {
+    const user = await prisma.users.findFirst({
+      where: {
+        email,
+      },
+      select: {
+        id: true,
+        name: true,
+        password: true,
+      },
+    });
+
+    return user;
+  }
+
   async checkIfExistWithEmail(email: string): Promise<boolean> {
     const user = await prisma.users.findFirst({
       where: {
