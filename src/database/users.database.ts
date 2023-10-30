@@ -1,11 +1,22 @@
 import prisma from '../connection/database.connection';
-import { CreateUserDto } from '../dtos/users.dtos';
+import { CreateUserDto, EditUserDto } from '../dtos/users.dtos';
 
 export default class UserRepository {
   async create(createUser: CreateUserDto) {
     await prisma.users.create({
       data: {
         ...createUser,
+      },
+    });
+    return;
+  }
+  async edit(editUser: EditUserDto, id: number) {
+    await prisma.users.update({
+      data: {
+        ...editUser,
+      },
+      where: {
+        id,
       },
     });
     return;

@@ -29,4 +29,20 @@ const loginUserSchema = validation((getSchema) => ({
   ),
 }));
 
-export { createUserSchema, loginUserSchema };
+const editUserSchema = validation((getSchema) => ({
+  body: getSchema<CreateUserDto>(
+    yup.object().shape({
+      name: yup
+        .string()
+        .required()
+        .min(5)
+        .max(20)
+        .matches(/^[a-zA-Z]+$/i),
+
+      email: yup.string().required().email().min(6),
+
+      password: yup.string().required().min(5),
+    })
+  ),
+}));
+export { createUserSchema, loginUserSchema, editUserSchema };
