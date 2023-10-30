@@ -40,4 +40,16 @@ export default class UserRepository {
 
     return !!user;
   }
+  async checkIfExistWithID(id: number): Promise<boolean> {
+    const user = await prisma.users.findFirst({
+      where: {
+        id,
+      },
+      select: {
+        id: true,
+      },
+    });
+
+    return !!user;
+  }
 }

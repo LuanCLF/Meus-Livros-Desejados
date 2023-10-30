@@ -1,7 +1,7 @@
 import { compare } from 'bcrypt';
 import UserRepository from '../../database/users.database';
 import { LoginUserDto } from '../../dtos/users.dtos';
-import { ApiError } from '../../middlewares/error';
+import { ApiError } from '../../middlewares/error.middleware';
 import jwt from 'jsonwebtoken';
 import passJwt from '../../shared/jwt';
 import { IUserLogin } from '../../entities/user.entity';

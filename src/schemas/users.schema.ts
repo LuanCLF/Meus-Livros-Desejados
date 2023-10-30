@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 import { CreateUserDto, LoginUserDto } from '../dtos/users.dtos';
-import { validation } from '../middlewares/validation';
+import { validation } from '../middlewares/validation.middleware';
 
 const createUserSchema = validation((getSchema) => ({
   body: getSchema<CreateUserDto>(

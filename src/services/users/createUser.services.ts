@@ -1,7 +1,7 @@
 import { RequestHandler } from 'express';
 import { CreateUserDto } from '../../dtos/users.dtos';
 import UserRepository from '../../database/users.database';
-import { ApiError } from '../../middlewares/error';
+import { ApiError } from '../../middlewares/error.middleware';
 import { hash } from 'bcrypt';
 
 const CreateUserService = async (createUser: CreateUserDto) => {
