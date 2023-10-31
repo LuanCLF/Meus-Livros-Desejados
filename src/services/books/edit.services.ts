@@ -8,15 +8,13 @@ const EditBookService = async (
   bookID: number
 ): Promise<void> => {
   const bookRepository = new BookRepository();
-  const bookExist = await bookRepository.checkIfBookExistWithUserId(id, bookID);
+  const bookExist = await bookRepository.getBookWithIds(id, bookID);
 
-  if (!bookExist || bookExist !== bookID) {
+  if (!bookExist) {
     throw new ApiError('O usuário não tem o livro informado', 404);
   }
 
   await bookRepository.edit(editBook, bookID);
-
- 
 };
 
 export default EditBookService;

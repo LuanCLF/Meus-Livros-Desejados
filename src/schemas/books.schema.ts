@@ -5,6 +5,7 @@ import {
   EditBookDto,
   EditBookQueryDto,
   ListBooksQueryDto,
+  SearchBookDto,
 } from '../dtos/books.dtos';
 
 const addBookSchema = validation((getSchema) => ({
@@ -55,5 +56,12 @@ const listBookSchema = validation((getSchema) => ({
     })
   ),
 }));
+const searchBookSchema = validation((getSchema) => ({
+  query: getSchema<SearchBookDto>(
+    yup.object().shape({
+      bookID: yup.number().required(),
+    })
+  ),
+}));
 
-export { addBookSchema, editBookSchema, listBookSchema };
+export { addBookSchema, editBookSchema, listBookSchema, searchBookSchema };

@@ -25,3 +25,6 @@ export interface ListBooksDto {
   page: number;
   take: number;
 }
+export interface SearchBookDto {
+  bookID: number;
+}

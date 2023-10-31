@@ -58,10 +58,10 @@ export default class BookRepository {
     return books;
   }
 
-  async checkIfBookExistWithUserId(
+  async getBookWithIds(
     id: number,
     bookID: number
-  ): Promise<number | undefined> {
+  ): Promise<IBook | null> {
     const book = await prisma.books.findFirst({
       where: {
         id: bookID,
@@ -73,6 +73,6 @@ export default class BookRepository {
       },
     });
 
-    return book?.id;
+    return book;
   }
 }
