@@ -38,7 +38,7 @@ model Books {
   id         Int      @id @default(autoincrement())
   title      String   
   author     String  
-  date       String?   
+  date       String?    
   gender     String?
  
   wishes  Wishes[]

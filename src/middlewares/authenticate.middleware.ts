@@ -25,7 +25,7 @@ const authentication: RequestHandler = async (req, res, next) => {
   await authenticate(user.id);
 
   req.headers = {
-    userID: user.id,
+    id: user.id,
   };
 
   next();
