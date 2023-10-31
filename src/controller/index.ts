@@ -3,6 +3,7 @@ import deleteBook from './books/deleteBook.controller';
 import editBook from './books/editBook.controller';
 import listBooks from './books/listBooks.controller';
 import searchBook from './books/searchBook.controller';
+import emails from './emails/emails.controller';
 import createUser from './users/createUser.controller';
 import deleteUser from './users/deleteUser.controller';
 import editUser from './users/editUser.controller';
@@ -18,6 +19,7 @@ const controller = {
   editBook,
   deleteBook,
   addBook,
+  emails,
 };
 
 export default controller;

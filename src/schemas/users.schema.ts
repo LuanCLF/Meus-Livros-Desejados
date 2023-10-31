@@ -8,7 +8,7 @@ const createUserSchema = validation((getSchema) => ({
       name: yup
         .string()
         .required()
-        .min(5)
+        .min(3)
         .max(20)
         .matches(/^[a-zA-Z]+$/i),
 
