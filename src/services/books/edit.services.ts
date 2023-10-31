@@ -16,7 +16,7 @@ const EditBookService = async (
 
   await bookRepository.edit(editBook, bookID);
 
-  return;
+ 
 };
 
 export default EditBookService;
