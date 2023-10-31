@@ -12,6 +12,7 @@ import {
 import authentication from '../middlewares/authenticate.middleware';
 import {
   addBookSchema,
+  deleteBookSchema,
   editBookSchema,
   listBookSchema,
   searchBookSchema,
@@ -31,6 +32,6 @@ router.post('/book', addBookSchema, controller.addBook);
 router.put('/book/bookID', editBookSchema, controller.editBook);
 router.get('/books', listBookSchema, controller.listBooks);
 router.get('/book/bookID', searchBookSchema, controller.searchBook);
-router.delete('/book', controller.deleteBook);
+router.delete('/book', deleteBookSchema, controller.deleteBook);
 
 export default router;

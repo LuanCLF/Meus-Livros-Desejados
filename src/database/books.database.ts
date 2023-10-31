@@ -32,6 +32,21 @@ export default class BookRepository {
 
     return;
   }
+  async delete(id: number, bookID: number): Promise<void> {
+    await prisma.books.delete({
+      where: {
+        id: bookID,
+        wishes: {
+          every: {
+            id_book: bookID,
+            id_user: id,
+          },
+        },
+      },
+    });
+
+    return;
+  }
 
   async listBooks(
     id: number,
@@ -58,10 +73,7 @@ export default class BookRepository {
     return books;
   }
 
-  async getBookWithIds(
-    id: number,
-    bookID: number
-  ): Promise<IBook | null> {
+  async getBookWithIds(id: number, bookID: number): Promise<IBook | null> {
     const book = await prisma.books.findFirst({
       where: {
         id: bookID,

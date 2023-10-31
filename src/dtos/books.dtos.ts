@@ -28,3 +28,6 @@ export interface ListBooksDto {
 export interface SearchBookDto {
   bookID: number;
 }
+export interface DeleteBookDto {
+  bookID: number;
+}

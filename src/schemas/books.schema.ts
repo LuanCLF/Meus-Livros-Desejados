@@ -2,6 +2,7 @@ import * as yup from 'yup';
 import { validation } from '../middlewares/validation.middleware';
 import {
   AddBookDto,
+  DeleteBookDto,
   EditBookDto,
   EditBookQueryDto,
   ListBooksQueryDto,
@@ -63,5 +64,18 @@ const searchBookSchema = validation((getSchema) => ({
     })
   ),
 }));
+const deleteBookSchema = validation((getSchema) => ({
+  query: getSchema<DeleteBookDto>(
+    yup.object().shape({
+      bookID: yup.number().required(),
+    })
+  ),
+}));
 
-export { addBookSchema, editBookSchema, listBookSchema, searchBookSchema };
+export {
+  addBookSchema,
+  editBookSchema,
+  listBookSchema,
+  searchBookSchema,
+  deleteBookSchema,
+};
