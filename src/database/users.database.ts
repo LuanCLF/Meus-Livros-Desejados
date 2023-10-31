@@ -2,7 +2,7 @@ import prisma from '../connection/database.connection';
 import { CreateUserDto, EditUserDto } from '../dtos/users.dtos';
 
 export default class UserRepository {
-  async create(createUser: CreateUserDto) {
+  async create(createUser: CreateUserDto): Promise<void> {
     await prisma.users.create({
       data: {
         ...createUser,
@@ -10,13 +10,27 @@ export default class UserRepository {
     });
     return;
   }
-  async edit(editUser: EditUserDto, id: number) {
+  async edit(editUser: EditUserDto, id: number): Promise<void> {
     await prisma.users.update({
       data: {
         ...editUser,
       },
       where: {
         id,
+      },
+    });
+    return;
+  }
+
+  async delete(id: number): Promise<void> {
+    await prisma.users.delete({
+      where: {
+        id,
+        wishes: {
+          every: {
+            id_user: id,
+          },
+        },
       },
     });
     return;

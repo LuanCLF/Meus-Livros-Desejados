@@ -12,3 +12,7 @@ export interface EditUserDto {
   email: string;
   password: string;
 }
+export interface DeleteUserDto {
+  email: string;
+  password: string;
+}

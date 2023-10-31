@@ -4,6 +4,7 @@ import 'dotenv/config';
 import express from 'express';
 import controller from '../controller';
 import {
+  DeleteUserSchema,
   createUserSchema,
   editUserSchema,
   loginUserSchema,
@@ -18,7 +19,7 @@ router.post('/user/login', loginUserSchema, controller.loginUser);
 router.use(authentication);
 
 router.put('/user', editUserSchema, controller.editUser);
-router.delete('/user', controller.deleteUser);
+router.delete('/user', DeleteUserSchema, controller.deleteUser);
 
 router.post('/book', controller.addBook);
 router.put('/book', controller.editBook);

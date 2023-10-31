@@ -1,5 +1,5 @@
 import * as yup from 'yup';
-import { CreateUserDto, LoginUserDto } from '../dtos/users.dtos';
+import { CreateUserDto, DeleteUserDto, LoginUserDto } from '../dtos/users.dtos';
 import { validation } from '../middlewares/validation.middleware';
 
 const createUserSchema = validation((getSchema) => ({
@@ -45,4 +45,14 @@ const editUserSchema = validation((getSchema) => ({
     })
   ),
 }));
-export { createUserSchema, loginUserSchema, editUserSchema };
+
+const DeleteUserSchema = validation((getSchema) => ({
+  body: getSchema<DeleteUserDto>(
+    yup.object().shape({
+      email: yup.string().required().email().min(6),
+
+      password: yup.string().required().min(5),
+    })
+  ),
+}));
+export { createUserSchema, loginUserSchema, editUserSchema, DeleteUserSchema };
