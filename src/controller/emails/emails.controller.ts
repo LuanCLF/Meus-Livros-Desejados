@@ -1,9 +1,10 @@
 import { RequestHandler } from 'express';
+import EmailService from '../../services/emails/emails.services';
 
 const emails: RequestHandler = async (req, res) => {
-  console.log('recebendo aqui', req.body);
+  await EmailService(req.body);
 
-  res.status(200).json();
+  res.status(204).json();
 };
 
 export default emails;

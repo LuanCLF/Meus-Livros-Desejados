@@ -1,4 +1,5 @@
 import prisma from '../connection/database.connection';
+import { WarningDto } from '../dtos/warnings.dtos';
 import { IWarning } from '../entities/warning.entity';
 
 export default class WarningRepository {
@@ -15,5 +16,17 @@ export default class WarningRepository {
     });
 
     return id;
+  }
+
+  async update(warning: WarningDto): Promise<void> {
+    await prisma.warnings.update({
+      where: {
+        id: Number(warning.id),
+      },
+      data: {
+        status: warning.status,
+      },
+    });
+    return;
   }
 }
