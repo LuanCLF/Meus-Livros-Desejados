@@ -6,7 +6,7 @@ import jwt from 'jsonwebtoken';
 import passJwt from '../../shared/jwt';
 import { IUserLogin } from '../../entities/user.entity';
 
-const loginUserService = async (
+const LoginUserService = async (
   loginUser: LoginUserDto
 ): Promise<IUserLogin> => {
   const { email, password } = loginUser;
@@ -37,4 +37,4 @@ const loginUserService = async (
   };
 };
 
-export default loginUserService;
+export default LoginUserService;

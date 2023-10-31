@@ -3,7 +3,7 @@ import UserRepository from '../../database/users.database';
 import { EditUserDto } from '../../dtos/users.dtos';
 import { ApiError } from '../../middlewares/error.middleware';
 
-const editUserServices = async (editUser: EditUserDto, id: number) => {
+const EditUserService = async (editUser: EditUserDto, id: number) => {
   const { email, password } = editUser;
 
   const userRepository = new UserRepository();
@@ -23,4 +23,4 @@ const editUserServices = async (editUser: EditUserDto, id: number) => {
   return;
 };
 
-export default editUserServices;
+export default EditUserService;

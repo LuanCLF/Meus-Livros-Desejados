@@ -3,7 +3,7 @@ import UserRepository from '../../database/users.database';
 import { DeleteUserDto } from '../../dtos/users.dtos';
 import { ApiError } from '../../middlewares/error.middleware';
 
-const deleteUserService = async (deleteUser: DeleteUserDto) => {
+const DeleteUserService = async (deleteUser: DeleteUserDto) => {
   const { email, password } = deleteUser;
   const userRepository = new UserRepository();
   const user = await userRepository.getPasswordWithEmail(email);
@@ -22,4 +22,4 @@ const deleteUserService = async (deleteUser: DeleteUserDto) => {
   await userRepository.delete(user.id);
 };
 
-export default deleteUserService;
+export default DeleteUserService;

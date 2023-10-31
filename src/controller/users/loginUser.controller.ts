@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
 import { LoginUserDto } from '../../dtos/users.dtos';
-import loginUserService from '../../services/users/loginUser.services';
+import LoginUserService from '../../services/users/loginUser.services';
 
 const loginUser = async (req: Request<{}, {}, LoginUserDto>, res: Response) => {
-  const user = await loginUserService(req.body);
+  const user = await LoginUserService(req.body);
 
   res.status(200).json({ ...user });
 };

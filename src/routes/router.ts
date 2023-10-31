@@ -10,7 +10,7 @@ import {
   loginUserSchema,
 } from '../schemas/users.schema';
 import authentication from '../middlewares/authenticate.middleware';
-import { addBookSchema } from '../schemas/books.schema';
+import { addBookSchema, editBookSchema } from '../schemas/books.schema';
 
 const router = express();
 
@@ -23,7 +23,7 @@ router.put('/user', editUserSchema, controller.editUser);
 router.delete('/user', DeleteUserSchema, controller.deleteUser);
 
 router.post('/book', addBookSchema, controller.addBook);
-router.put('/book', controller.editBook);
+router.put('/book', editBookSchema, controller.editBook);
 router.get('/book/id', controller.searchBook);
 router.get('/books', controller.listBooks);
 router.delete('/book', controller.deleteBook);

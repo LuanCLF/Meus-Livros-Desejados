@@ -4,10 +4,10 @@ import { AddBookDto } from '../../dtos/books.dtos';
 
 const addBook = async (req: Request<{}, {}, AddBookDto>, res: Response) => {
   const { id } = req.headers;
-  
-  await AddBookService(req.body, Number(id));
 
-  res.status(201).json();
+  const book = await AddBookService(req.body, Number(id));
+
+  res.status(201).json(book);
 };
 
 export default addBook;
