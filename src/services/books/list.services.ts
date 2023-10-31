@@ -1,5 +1,16 @@
-import { RequestHandler } from 'express';
+import BookRepository from '../../database/books.database';
+import { ListBooksDto } from '../../dtos/books.dtos';
+import { IBook } from '../../entities/book,entity';
 
-const listBooks: RequestHandler = async (req, res) => {};
+const ListBooksService = async (
+  id: number,
+  listBooksDto: ListBooksDto
+): Promise<Array<IBook>> => {
+  const { filter, page, take } = listBooksDto;
 
-export default listBooks;
+  const books = await new BookRepository().listBooks(id, filter, page, take);
+
+  return books;
+};
+
+export default ListBooksService;

@@ -1,6 +1,11 @@
 import * as yup from 'yup';
 import { validation } from '../middlewares/validation.middleware';
-import { AddBookDto, EditBookDto, EditBookQueryDto } from '../dtos/books.dtos';
+import {
+  AddBookDto,
+  EditBookDto,
+  EditBookQueryDto,
+  ListBooksQueryDto,
+} from '../dtos/books.dtos';
 
 const addBookSchema = validation((getSchema) => ({
   body: getSchema<AddBookDto>(
@@ -41,5 +46,14 @@ const editBookSchema = validation((getSchema) => ({
     })
   ),
 }));
+const listBookSchema = validation((getSchema) => ({
+  query: getSchema<ListBooksQueryDto>(
+    yup.object().shape({
+      filter: yup.string().optional(),
+      page: yup.number().optional().min(0),
+      take: yup.number().optional().min(0),
+    })
+  ),
+}));
 
-export { addBookSchema, editBookSchema };
+export { addBookSchema, editBookSchema, listBookSchema };

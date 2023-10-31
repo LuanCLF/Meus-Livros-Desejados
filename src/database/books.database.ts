@@ -1,5 +1,6 @@
 import prisma from '../connection/database.connection';
 import { AddBookDto, EditBookDto } from '../dtos/books.dtos';
+import { IBook } from '../entities/book,entity';
 
 export default class BookRepository {
   async add(addBookDto: AddBookDto, id: number): Promise<{ id: number }> {
@@ -30,6 +31,31 @@ export default class BookRepository {
     });
 
     return;
+  }
+
+  async listBooks(
+    id: number,
+    filter: string,
+    page: number,
+    take: number
+  ): Promise<Array<IBook>> {
+    const books = await prisma.books.findMany({
+      where: {
+        wishes: {
+          some: {
+            id_user: id,
+          },
+        },
+        OR: [{ author: { contains: filter } }, { title: { contains: filter } }],
+      },
+      skip: page,
+      take,
+      orderBy: {
+        id: 'desc',
+      },
+    });
+
+    return books;
   }
 
   async checkIfBookExistWithUserId(

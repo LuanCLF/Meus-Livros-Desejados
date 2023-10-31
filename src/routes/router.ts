@@ -10,7 +10,11 @@ import {
   loginUserSchema,
 } from '../schemas/users.schema';
 import authentication from '../middlewares/authenticate.middleware';
-import { addBookSchema, editBookSchema } from '../schemas/books.schema';
+import {
+  addBookSchema,
+  editBookSchema,
+  listBookSchema,
+} from '../schemas/books.schema';
 
 const router = express();
 
@@ -24,8 +28,8 @@ router.delete('/user', DeleteUserSchema, controller.deleteUser);
 
 router.post('/book', addBookSchema, controller.addBook);
 router.put('/book', editBookSchema, controller.editBook);
+router.get('/books', listBookSchema, controller.listBooks);
 router.get('/book/id', controller.searchBook);
-router.get('/books', controller.listBooks);
 router.delete('/book', controller.deleteBook);
 
 export default router;
